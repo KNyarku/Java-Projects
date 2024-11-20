@@ -1,0 +1,68 @@
+public class BusRoute {
+// Data members--private
+private int rteNumber;
+
+private int passengers;
+
+private double pctTransfer;
+
+private double connectingTime;
+// Constructor or existence methodÑpublic (no return type ever)
+public BusRoute(int r, int p, double pct, double c) {
+
+rteNumber = r;
+
+passengers = p;
+
+pctTransfer = pct;
+
+connectingTime = c;
+}
+// ÔGetÕ methodsÑrespond to messages from other objects--public
+public int getRteNumber() {return rteNumber;}
+
+public int getPassengers() {return passengers;}
+
+public double getPctTransfer() {return pctTransfer;}
+
+public double getConnectingTime() {return connectingTime;}
+
+public double getConnectionPassengers() {
+
+return passengers * pctTransfer / 100.0;}
+// ÔSetÕ methods-respond to messages from other objects--public
+public void setPassengers(int i) { passengers = i;}
+
+public void setPctTransfer(double d) {pctTransfer = d;}
+
+public void setRteNumber(int i) {rteNumber = i;}
+
+public void setConnectingTime(double c){connectingTime = c;}
+{
+    this.connectingTime = connectingTime;
+}
+}  // ÔvoidÕ means they donÕt send a response, just do whatÕs asked
+
+
+public class BusTransfer {
+public static void main(String[] args) {
+// Create bus route objects
+BusRoute bus1 = new BusRoute(1, 300, 80.0, 7);  // ÔnewÕ keyword
+BusRoute bus2 = new BusRoute(47, 400, 30.0, 5);
+BusRoute bus3 = new BusRoute(70, 500, 50.0, 9);
+// Send messages to the routes asking for connecting psgrs
+double psgr1= bus1.getConnectionPassengers();
+
+double psgr2= bus2.getConnectionPassengers();
+
+double psgr3= bus3.getConnectionPassengers();
+
+
+// Print out the results
+System.out.println("Route "+ bus1.getRteNumber()+ " "+ psgr1);
+System.out.println("Route "+ bus2.getRteNumber()+ " "+ psgr2);
+System.out.println("Route "+ bus3.getRteNumber()+ " "+ psgr3);
+double totalPsgr= psgr1 + psgr2 + psgr3;
+System.out.println("Total passengers: "+ totalPsgr);
+}
+} 
